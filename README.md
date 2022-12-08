@@ -1,1 +1,1 @@
-# digital_diffeomorphism
+# digital diffeomorphism
