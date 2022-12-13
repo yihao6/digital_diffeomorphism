@@ -1,11 +1,10 @@
 <img src='imgs/example.png' width="1000px"/>
 
 # Digital diffeomorphism and Non-diffeomorphic volume
-This is an python implementation of the **digital diffeomorphism criteria** and
+This is an implementation of the **digital diffeomorphism criteria** and
 **non-diffeomorphic volume** computation we introduced in our paper:
 
-    <a href="https://arxiv.org/abs/2212.06060">Liu, Yihao, et al. "On Finite Difference Jacobian Computation in Deformable
-    Image Registration." arXiv preprint arXiv:2212.06060 (2022).</a>
+<a href="https://arxiv.org/abs/2212.06060">Liu, Yihao, et al. "On Finite Difference Jacobian Computation in Deformable Image Registration." arXiv preprint arXiv:2212.06060 (2022).</a>
 
 ## Motivation
 The Jacobian determinant $|J|$ of spatial transformations is a widely used metric in
