@@ -21,7 +21,8 @@ the input to the function "calc_jac_dets" are deformation fields not displacemen
 You can use the function "get_identity_grid" to easily convert between the two.
 
 If you use this code please cite the following paper:
-    "On Finite Difference Jacobian Computation in Deformable Image Registration"
+    Liu, Yihao, et al. "On Finite Difference Jacobian Computation in Deformable
+    Image Registration." arXiv preprint arXiv:2212.06060 (2022).
 
 Licensed under GNU General Public License v3.0
 """
