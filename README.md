@@ -15,9 +15,9 @@ definition of digital diffeomorphism that solves several errors that inherent in
 the central difference based $|J|$. We further propose to use non-diffeomorphic
 volume to measure the irregularity of 3D transformations.
 
-<img src='imgs/checkerboard_problem.png' width="100px"/>
+<img src='imgs/checkerboard_problem.png' align="center" width="200px"/>
 
-An example failure case for the central difference based $|J|$. The center pixel
+An failure case of the central difference based $|J|$. The center pixel
 has central difference based $|J|=1$ but it is not diffeomorphic. In fact, the
 transformation at the center pixel has no effect on the computation of central
 difference based $|J|$, even if it moves outside the field of view.
