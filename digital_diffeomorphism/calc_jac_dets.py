@@ -104,29 +104,34 @@ def calc_Jstar_2(trans):
     return jac_det
 
 def calc_jac_dets(trans):
-    jac_det = {}
+    '''calculate the Jacobian determinants for the input transformation.
+        input: trans -- transformation of size 3xHxWxS
+    '''
+    jac_dets = {}
     # calculate all finite difference based |J|'s
     for grad_args in ['0x0y0z', '+x+y+z', '+x+y-z', '+x-y+z', '+x-y-z',
                         '-x+y+z', '-x+y-z', '-x-y+z', '-x-y-z']:
-        jac_det[grad_args] = calc_J_i(trans, grad_args)
+        jac_dets[grad_args] = calc_J_i(trans, grad_args)
 
     # calc 'all |J_i| > 0'
-    jac_det['all J_i>0'] = np.ones_like(jac_det['0x0y0z'])
+    jac_dets['all J_i>0'] = np.ones_like(jac_dets['0x0y0z'])
     for grad_args in ['+x+y+z', '+x+y-z', '+x-y+z', '+x-y-z',
                         '-x+y+z', '-x+y-z', '-x-y+z', '-x-y-z']:
-        jac_det['all J_i>0'] *= (jac_det[grad_args] > 0)
+        jac_dets['all J_i>0'] *= (jac_dets[grad_args] > 0)
 
-    # sanity check: if 'all J_i > 0', the central difference must be positive
-    assert np.sum((jac_det['all J_i>0'] > 0) * (jac_det['0x0y0z'] <= 0)) == 0
+    # sanity check: a voxel has 'all J_i > 0', the central difference must be positive
+    assert np.sum((jac_dets['all J_i>0'] > 0) * (jac_dets['0x0y0z'] <= 0)) == 0
 
-    jac_det['Jstar_1'] = calc_Jstar_1(trans)
-    jac_det['Jstar_2'] = calc_Jstar_2(trans)
+    jac_dets['Jstar_1'] = calc_Jstar_1(trans)
+    jac_dets['Jstar_2'] = calc_Jstar_2(trans)
 
-    return jac_det
+    return jac_dets
 
 def get_identity_grid(array):
     '''Return the identity transformation of the same size as the input.
-        Expect input dimension: 3xHxWxS.'''
+        input:  array -- numpy array of size 3xHxWxS
+        output: grid  -- the identity grid of size 3xHxWxS
+    '''
     dims = array.shape[1:]
     vectors = [np.arange(0, dim, 1) for dim in dims]
 
