@@ -56,7 +56,8 @@ if __name__ == '__main__':
             # load transformation from file
             trans = np.load(trans_path)['arr_0'].astype('float32')
 
-            # upsample the input to match the brain label image
+            # upsample the input by a scale of 2 because the transformation was downsampled
+            # before submitting to the learn2reg 2021 task03 challenge
             trans = np.array([scipy.ndimage.zoom(trans[i], 2, order=2) for i in range(3)])
 
             # convert displacement field to deformation field

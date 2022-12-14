@@ -175,7 +175,7 @@ if __name__ == '__main__':
     trans = np.load(args.trans)['arr_0'].astype('float32')
 
     if args.scale:
-        # upsample the input to match the brain label image
+        # upsample the input by a scale of 2 if needed
         trans = np.array([scipy.ndimage.zoom(trans[i], 2, order=2) for i in range(3)])
 
     if args.disp:
