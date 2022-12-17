@@ -52,11 +52,10 @@ for the 19 displacement fields in the example data.
 ### Citation
 If you use this code, please cite our paper.
 ```
-@article{liu2022on,
+@article{liu2022finite,
   title={On Finite Difference Jacobian Computation in Deformable Image Registration},
   author={Liu, Yihao and Chen, Junyu and Wei, Shuwen and Carass, Aaron and Prince, Jerry},
   journal={arXiv preprint arXiv:2212.06060},
   year={2022}
 }
-
 ```
