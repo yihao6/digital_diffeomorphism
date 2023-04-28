@@ -11,6 +11,7 @@ figures/
 scripts/
 data/
 *.zip
+*.nii.gz
 
 # Distribution / packaging
 .Python
