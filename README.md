@@ -7,22 +7,34 @@ This is an implementation of the **digital diffeomorphism volume** and
 <a href="https://arxiv.org/abs/2212.06060">Liu, Yihao, et al. "On Finite Difference Jacobian Computation in Deformable Image Registration." arXiv preprint arXiv:2212.06060 (2022).</a>
 
 ## Motivation
-The Jacobian determinant $|J|$ of spatial transformations is a widely used metric in
+The Jacobian determinant $|J|$ of spatial transformations is a widely used measure in
 deformable image registration, but the details of its computation are often overlooked.
-Contrary to what one might expect, the commonly used central difference base $|J|$
-does not reflect if the transformation is diffeomorphic or not. We proposed the
-definition of digital diffeomorphism that solves several errors that inherent in
-the central difference based $|J|$. We further propose to use non-diffeomorphic
-volume to measure the irregularity of 3D transformations.
-
+Contrary to what one might expect, when approximated using the central difference,
+the number of pixels/voxels with negative $|J|$ does not reflect if the transformation is diffeomorphic or not.
 <p align="center">
   <img src='docs/_static/imgs/checkerboard_problem.png' align="center" width="200px"/>
 </p>
-
-An failure case of the central difference based $|J|$. The center pixel
-has central difference based $|J|=1$ but it is not diffeomorphic. In fact, the
-transformation at the center pixel has no effect on the computation of central
+The example above demonstrate a failure case of the central difference based $|J|$.
+The center pixel has central difference based $|J|=1$ but it is not diffeomorphic.
+In fact, the transformation at the center pixel has no effect on the computation of central
 difference based $|J|$, even if it moves outside the field of view.
+
+We proposed the definition of digital diffeomorphism that solves several errors that inherent in
+the central difference based $|J|$. We further propose to use non-diffeomorphic
+volume (NDV) and non-diffeomorphic area (NDA) to measure the irregularity of 3D/2D transformations.
+The proposed NDV and NDA also measures the **severity** of the irregularity whereas the central difference approximated $|J|$
+is only a binary indicator.
+<p align="center">
+  <img src='docs/_static/imgs/nda_demonstration.png' align="center" width="600px"/>
+</p>
+The center pixel in all three cases shown above would be considered diffeomorphic
+because of the checkerboard problem. The forward difference based $|J|$ is able to identiy that
+(b) and (c) exhibit folding, but only NDA can provide the observation that the non-diffeomorphic space
+caused by the transformation shown in (c) is more than three times larger than (b).
+The transformation shown in (b) is obviously more favorable than the one shown in (c)
+in terms of regularity. As such it is important for us to be able to draw distinctions between
+there two senarios.
+
 ## Getting Started
 
 ### Installation
@@ -69,8 +81,15 @@ If the transformation is stored as a displacement field:
 ```bash
 ndv disp_2d.nii.gz --disp
 ```
+
+Example inputs can be found at https://iacl.ece.jhu.edu/index.php?title=Digital_diffeomorphism
+
 ### Potential Pitfalls
-1. Several packages implement spatial transformations using a normalized sampling grid. For example, <a href="https://arxiv.org/abs/2212.06060">torch.nn.functional.grid_sample</a>. In this package, we use un-normalized coordinates to represent transformations. Therefore, the input sampling grid or displacement field should be in voxel or pixel units. In case the input is normalized, it must be unnormalized prior to using this package.
+1. Several packages implement spatial transformations using a normalized sampling grid.
+For example, <a href="https://arxiv.org/abs/2212.06060">torch.nn.functional.grid_sample</a>.
+In this package, we use un-normalized coordinates to represent transformations.
+Therefore, the input sampling grid or displacement field should be in voxel or pixel units.
+In case the input is normalized, it must be unnormalized prior to using this package.
 
 ### Citation
 If you use this code, please cite our paper.
