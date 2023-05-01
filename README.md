@@ -44,8 +44,6 @@ pip install digital-diffeomorphism
 ```
 
 To install from the source:
-
-- Clone this repo:
 ```bash
 git clone https://github.com/yihao6/digital_diffeomorphism.git
 
