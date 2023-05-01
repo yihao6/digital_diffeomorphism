@@ -30,7 +30,7 @@ is only a binary indicator.
 The center pixel in all three cases shown above would be considered diffeomorphic
 because of the checkerboard problem. The forward difference based $|J|$ is able to identiy that
 (b) and (c) exhibit folding, but only NDA can provide the observation that the non-diffeomorphic space
-caused by the transformation shown in (c) is more than three times larger than (b).
+caused by the transformation shown in (c) is larger than (b).
 The transformation shown in (b) is obviously more favorable than the one shown in (c)
 in terms of regularity. As such it is important for us to be able to draw distinctions between
 there two senarios.
