@@ -1,7 +1,7 @@
 <img src='docs/_static/imgs/example.png' width="1000px"/>
 
-# Digital diffeomorphism volume and Non-diffeomorphic area
-This is an implementation of the **digital diffeomorphism volume** and
+# Non-diffeomorphic volume and Non-diffeomorphic area
+This is an implementation of the **non-diffeomorphic volume** and
 **non-diffeomorphic area** computation we introduced in our paper:
 
 <a href="https://arxiv.org/abs/2212.06060">Liu, Yihao, et al. "On Finite Difference Jacobian Computation in Deformable Image Registration." arXiv preprint arXiv:2212.06060 (2022).</a>
