@@ -1,6 +1,6 @@
 <img src='docs/_static/imgs/example.png' width="1000px"/>
 
-# Non-diffeomorphic volume and Non-diffeomorphic area
+# Digital Diffeomorphism: Non-diffeomorphic volume and Non-diffeomorphic area
 This is an implementation of the **non-diffeomorphic volume** and
 **non-diffeomorphic area** computation we introduced in our paper:
 
@@ -14,6 +14,7 @@ the number of pixels/voxels with negative $|J|$ does not reflect if the transfor
 <p align="center">
   <img src='docs/_static/imgs/checkerboard_problem.png' align="center" width="200px"/>
 </p>
+
 The example above demonstrate a failure case of the central difference based $|J|$.
 The center pixel has central difference based $|J|=1$ but it is not diffeomorphic.
 In fact, the transformation at the center pixel has no effect on the computation of central
@@ -27,6 +28,7 @@ is only a binary indicator.
 <p align="center">
   <img src='docs/_static/imgs/nda_demonstration.png' align="center" width="600px"/>
 </p>
+
 The center pixel in all three cases shown above would be considered diffeomorphic
 because of the checkerboard problem. The forward difference based $|J|$ is able to identiy that
 (b) and (c) exhibit folding, but only NDA can provide the observation that the non-diffeomorphic space
