@@ -6,20 +6,8 @@ import numpy as np
 import torch
 import torch.nn.functional as nnf
 from torch.linalg import det
-import scipy.ndimage
 
-from digital_diffeomorphism.kernel_creator import KernelCreator
 from digital_diffeomorphism.utils import spatial_padding
-
-def calc_Ji_2d(trans, kernels):
-
-    gradx = scipy.ndimage.correlate(trans, kernels['x'], mode='nearest')
-    grady = scipy.ndimage.correlate(trans, kernels['y'], mode='nearest')
-
-    jacobian = np.stack([gradx, grady], axis=3)
-    determinant = np.linalg.det(jacobian)
-
-    return determinant[1:-1, 1:-1]
 
 def calc_jacdets_3d(trans, device):
 
