@@ -1,6 +1,6 @@
 <img src='docs/_static/imgs/example.png' width="1000px"/>
 
-# Non-diffeomorphic volume and Non-diffeomorphic area
+# Digital Diffeomorphism: Non-diffeomorphic volume and Non-diffeomorphic area
 This is an implementation of the **non-diffeomorphic volume** and
 **non-diffeomorphic area** computation we introduced in our paper:
 

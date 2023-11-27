@@ -20,11 +20,12 @@ def non_diffeomorphic_volume():
     parser.add_argument('transformation_file', type=str, help='Path to the transformation Nifti file')
     parser.add_argument('--disp', action='store_true', help='Flag for displacement field input')
     parser.add_argument('--mask_file', type=str, help='Path to the mask Nifti file')
+    parser.add_argument('--save_results', action='store_true', help='Save the output in the transformation folder')
     args = parser.parse_args()
 
     # load transformation data
     transformation_obj = nib.load(args.transformation_file)
-    transformation = transformation_obj.get_fdata()
+    transformation, affine = transformation_obj.get_fdata(), transformation_obj.affine
 
     # convert displacement field to deformation field if necessary
     if args.disp:
@@ -42,12 +43,18 @@ def non_diffeomorphic_volume():
 
     # non-diffeomorphic volume
     non_diff_volume = calc_non_diffeomorphic_volume(jacobian_determinants, mask)
+    if args.save_results:
+        save_filename = args.transformation_file.replace('.nii.gz', '_non_diff_volume.nii.gz')
+        nib.save(nib.Nifti1Image(non_diff_volume, affine), save_filename)
     non_diff_volume = np.sum(non_diff_volume)
     non_diff_volume_percentage = non_diff_volume / total_voxels * 100
     print(f'Non-diffeomorphic Volume: {non_diff_volume:.2f}({non_diff_volume_percentage:.2f}%)')
 
     # non-diffeomorphic voxels
     non_diff_voxels = calc_non_diffeomorphic_voxels(jacobian_determinants, mask)
+    if args.save_results:
+        save_filename = args.transformation_file.replace('.nii.gz', '_non_diff_voxels.nii.gz')
+        nib.save(nib.Nifti1Image(non_diff_voxels, affine), save_filename)
     non_diff_voxels = np.sum(non_diff_voxels)
     non_diff_voxels_percentage = non_diff_voxels / total_voxels * 100
     print(f'Non-diffeomorphic Voxels: {non_diff_voxels:.2f}({non_diff_voxels_percentage:.2f}%)')
@@ -57,11 +64,12 @@ def non_diffeomorphic_area():
     parser.add_argument('transformation_file', type=str, help='Path to the transformation Nifti file')
     parser.add_argument('--mask_file', type=str, help='Path to the mask Nifti file')
     parser.add_argument('--disp', action='store_true', help='Flag for displacement field input')
+    parser.add_argument('--save_results', action='store_true', help='Save the output in the transformation folder')
     args = parser.parse_args()
 
     # load transformation data
     transformation_obj = nib.load(args.transformation_file)
-    transformation = transformation_obj.get_fdata()
+    transformation, affine = transformation_obj.get_fdata(), transformation_obj.affine
 
     # convert displacement field to deformation field if necessary
     if args.disp:
@@ -79,12 +87,18 @@ def non_diffeomorphic_area():
 
     # non-diffeomorphic area
     non_diff_area = calc_non_diffeomorphic_area(jacobian_determinants, mask)
+    if args.save_results:
+        save_filename = args.transformation_file.replace('.nii.gz', '_non_diff_area.nii.gz')
+        nib.save(nib.Nifti1Image(non_diff_area, affine), save_filename)
     non_diff_area = np.sum(non_diff_area)
     non_diff_area_percentage = non_diff_area / total_pixels * 100
     print(f'Non-diffeomorphic Area: {non_diff_area:.2f}({non_diff_area_percentage:.2f}%)')
 
     # non-diffeomorphic pixels
     non_diff_pixels = calc_non_diffeomorphic_pixels(jacobian_determinants, mask)
+    if args.save_results:
+        save_filename = args.transformation_file.replace('.nii.gz', '_non_diff_pixels.nii.gz')
+        nib.save(nib.Nifti1Image(non_diff_pixels, affine), save_filename)
     non_diff_pixels = np.sum(non_diff_pixels)
     non_diff_pixels_percentage = non_diff_pixels / total_pixels * 100
     print(f'Non-diffeomorphic Pixels: {non_diff_pixels:.2f}({non_diff_pixels_percentage:.2f}%)')
