@@ -66,6 +66,13 @@ If the transformation is stored as a displacement field:
 ndv disp_3d.nii.gz --disp
 ```
 
+Use '--gpu' option to enable GPU acceleration:
+```bash
+ndv grid_3d.nii.gz --gpu
+# or
+ndv disp_3d.nii.gz --disp --gpu
+```
+
 To evaluate a 2D sampling grid with dimension $H\times W\times 2$
 ```bash
 nda grid_2d.nii.gz
