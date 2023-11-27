@@ -21,7 +21,7 @@ def calc_non_diffeomorphic_volume(jacobian_determinants, mask):
         A matrix of floating numbers that indicate the non-diffeomorphic volume.
     """
     non_diff_volume = np.zeros_like(jacobian_determinants['000'])
-    for diff_direction in ['+++', '++-', '+-+', '+--', 'Jstar1', 'Jstar2', '-++', '-+-', '--+', '---']:
+    for diff_direction in ['+++', '++-', '+-+', '+--', 'j1*', 'j2*', '-++', '-+-', '--+', '---']:
         non_diff_volume += -0.5 * np.minimum(jacobian_determinants[diff_direction], 0) * mask / 6
 
     return non_diff_volume
