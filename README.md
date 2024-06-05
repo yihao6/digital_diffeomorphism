@@ -4,7 +4,7 @@
 This is an implementation of the **non-diffeomorphic volume** and
 **non-diffeomorphic area** computation we introduced in our paper:
 
-<a href="https://arxiv.org/abs/2212.06060">Liu, Yihao, et al. "On Finite Difference Jacobian Computation in Deformable Image Registration." arXiv preprint arXiv:2212.06060 (2022).</a>
+<a href="https://doi.org/10.1007/s11263-024-02047-1">"On Finite Difference Jacobian Computation in Deformable Image Registration." Liu, Yihao, Chen, Junyu, Wei, Shuwen, Carass, Aaron, and Prince, Jerry. The International Journal of Computer Vision (2024).</a>
 
 ## Motivation
 The Jacobian determinant $|J|$ of spatial transformations is a widely used measure in
@@ -100,10 +100,13 @@ In case the input is normalized, it must be unnormalized prior to using this pac
 ### Citation
 If you use this code, please cite our paper.
 ```
-@article{liu2022finite,
-  title={On Finite Difference Jacobian Computation in Deformable Image Registration},
+@article{liu2024finite,
+  title={On finite difference jacobian computation in deformable image registration},
   author={Liu, Yihao and Chen, Junyu and Wei, Shuwen and Carass, Aaron and Prince, Jerry},
-  journal={arXiv preprint arXiv:2212.06060},
-  year={2022}
+  journal={International Journal of Computer Vision},
+  pages={1--11},
+  year={2024},
+  publisher={Springer}
 }
+
 ```
