@@ -54,7 +54,7 @@ cd digital_diffeomorphism
 python setup.py install
 ```
 
-### Usage
+### Command Line Usage
 To evaluate a 3D sampling grid with dimension $H\times W\times D\times 3$
 ```bash
 ndv grid_3d.nii.gz
@@ -86,6 +86,23 @@ This will calculate
 If the transformation is stored as a displacement field:
 ```bash
 ndv disp_2d.nii.gz --disp
+```
+
+### Python Usage
+After installation, you can use
+```
+import digital_diffeomorphism as dd
+
+(
+    nd_volume, nd_volume_pct, nd_volume_map,
+    nd_voxels, nd_voxels_pct, nd_voxels_map
+) = dd.ndv(transformation, mask, is_disp, use_gpu)
+
+(
+    nd_area, nd_area_pct, nd_area_map,
+    nd_pixels, nd_pixels_pct, nd_pixels_map
+) = dd.nda(transformation, mask, is_disp, use_gpu)
+
 ```
 
 Example inputs can be found at https://iacl.ece.jhu.edu/index.php?title=Digital_diffeomorphism

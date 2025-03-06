@@ -6,6 +6,6 @@ __description__ = "Digital diffeomorphism: Non-diffeomorphic volume and non-diff
 __url__ = "https://github.com/yihao6/digital_diffeomorphism"
 __author__ = """Yihao Liu"""
 __email__ = "yliu236@jhu.edu"
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 __license__ = "GPLv3"
 __copyright__ = "Copyright 2023 Yihao Liu"
